@@ -24,8 +24,6 @@ onMounted(() => {
   }, 1000);
 });
 
-
-
 </script>
 
 <template>
@@ -40,7 +38,6 @@ onMounted(() => {
 
 <style scoped>
   
-
 .clock-dial {
   width: 500px;
   height: 500px;
@@ -126,6 +123,5 @@ onMounted(() => {
   height: 35%;
   background-color: black;
 }
-
 
 </style>
