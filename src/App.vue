@@ -1,32 +1,30 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted} from "vue";
 
 const hourHand = ref("");
 const minuteHand = ref("");
 const secondHand = ref("");
 const currentDate = ref(new Date());
 
+const secDeg = ref(0);
+const minDeg = ref(0);
+const hourDeg = ref(0);
 
-function setRotation(element,rotationRatio) {
-  return reactive({
-    '--rotation': rotationRatio.value * 360
-  })
-}
 onMounted(() => {
-  setInterval(() => {
+  const updateClock= setInterval(() => {
 
     currentDate.value = new Date();
-    const secondsRatio = currentDate.value.getSeconds() / 60;
-    const minutesRatio = (secondsRatio + currentDate.value.getMinutes()) / 60;
-    const hoursRatio = (minutesRatio + currentDate.value.getHours()) / 12; 
+    const sec = currentDate.value.getSeconds();
+    const min = currentDate.value.getMinutes();
+    const hour = currentDate.value.getHours(); 
 
-    setRotation(secondHand.value, secondsRatio);
-    setRotation(minuteHand.value, minutesRatio);
-    setRotation(hourHand.value, hoursRatio);
-
+    secDeg.value = ((sec / 60) * 360) + 90;
+    minDeg.value = ((min / 60) * 360) + ((sec / 60) * 6) + 90;
+    hourDeg.value = ((hour / 12) * 360) + ((min / 60) * 30) + 90;
     
   }, 1000);
 });
+
 
 
 </script>
@@ -34,9 +32,9 @@ onMounted(() => {
 <template>
  <div class="clock-dial">
     <div class="point"></div>
-    <div class="hand hour" ref="hourHand" :style="setRotation"></div>
-    <div class="hand minute" ref="minuteHand" :style="setRotation"></div>
-    <div class="hand second" ref="secondHand" :style="setRotation"></div>
+    <div class="hand hour" ref="hourHand" :style="{transform: `rotate(${hourDeg}deg)`}"></div>
+    <div class="hand minute" ref="minuteHand" :style="{transform: `rotate(${minDeg}deg)`}"></div>
+    <div class="hand second" ref="secondHand" :style="{transform: `rotate(${secDeg}deg)`}"></div>
     <div class="hour" v-for="(n, i) in 12" :key="i" :class='["num"+ i]'>{{n}}</div>
  </div>
 </template>
@@ -101,7 +99,6 @@ onMounted(() => {
 .num10 {--rotation: 330deg}
 
 .hand {
-  --rotation: 0;
   position: absolute;
   bottom: 50%;
   left: 50%;
@@ -110,7 +107,7 @@ onMounted(() => {
   border-top-right-radius: 10px;
   transform-origin: bottom;
   z-index: 10;
-  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+  transform: translateX(-50%);
 }
 
 .hand.second {
