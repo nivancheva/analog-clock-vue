@@ -4,7 +4,6 @@ import { ref, onMounted} from "vue";
 const hourHand = ref("");
 const minuteHand = ref("");
 const secondHand = ref("");
-const currentDate = ref(new Date());
 
 const secDeg = ref(0);
 const minDeg = ref(0);
@@ -13,14 +12,14 @@ const hourDeg = ref(0);
 onMounted(() => {
   const updateClock= setInterval(() => {
 
-    currentDate.value = new Date();
-    const sec = currentDate.value.getSeconds();
-    const min = currentDate.value.getMinutes();
-    const hour = currentDate.value.getHours(); 
+    const currentDate = new Date();
+    const sec = currentDate.getSeconds();
+    const min = currentDate.getMinutes();
+    const hour = currentDate.getHours(); 
 
-    secDeg.value = ((sec / 60) * 360) + 90;
-    minDeg.value = ((min / 60) * 360) + ((sec / 60) * 6) + 90;
-    hourDeg.value = ((hour / 12) * 360) + ((min / 60) * 30) + 90;
+    secDeg.value = sec / 60 * 360;
+    minDeg.value = min / 60 * 360;
+    hourDeg.value = hour / 12 * 360;
     
   }, 1000);
 });
