@@ -1,31 +1,17 @@
 <script setup>
-import { ref, onMounted } from "vue"
 
-const top = ref(0);
-const left = ref(0);
 
-function position() {
-  return reactive({
-      top: `${this.top}px`,
-      left: `${this.left}px`
-  })
-}
 
-function calckHourPosition() {
-  top.value = 5
-  left.value = 25
-}
-
-onMounted(() => {
-  calckHourPosition();
-});
 
 </script>
 
 <template>
  <div class="clock-dial">
     <div class="point"></div>
-    <div class="hour" v-for="(n, i) in 12" :key="i" :style="position">{{n}}</div>
+    <div class="hand hour"></div>
+    <div class="hand minute"></div>
+    <div class="hand second"></div>
+    <div class="hour" v-for="(n, i) in 12" :key="i" :class='["num"+ i]'>{{n}}</div>
  </div>
 </template>
 
@@ -52,10 +38,37 @@ onMounted(() => {
 }
 
 .hour {
+  --rotation: 0;
   font-size: 3rem;
   font-weight: bold;
   color: black;
-  
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: rotate(var(--rotation));
 }
+
+.num0 {--rotation: 30deg}
+
+.num1 {--rotation: 60deg}
+
+.num2 {--rotation: 90deg}
+
+.num3 {--rotation: 120deg}
+
+.num4 {--rotation: 150deg}
+
+.num5 {--rotation: 180deg}
+
+.num6 {--rotation: 210deg}
+
+.num7 {--rotation: 240deg}
+
+.num8 {--rotation: 270deg}
+
+.num9 {--rotation: 300deg}
+
+.num10 {--rotation: 330deg}
 
 </style>
