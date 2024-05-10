@@ -28,22 +28,29 @@ function setClock() {
 </script>
 
 <template>
- <div class="clock-dial">
-    <div class="point"></div>
-    <div class="hand hour" ref="hourHand" :style="{transform: `translate(-50%) rotate(${hourDeg}deg)`}"></div>
-    <div class="hand minute" ref="minuteHand" :style="{transform: `translate(-50%) rotate(${minDeg}deg)`}"></div>
-    <div class="hand second" ref="secondHand" :style="{transform: `translate(-50%) rotate(${secDeg}deg)`}"></div>
-    <div :class='["hour num"+ i]' v-for="(n, i) in 12" :key="i" :style="`--rotation:30*calc(${i} + 1)`">
-      <span>{{n}}</span>
-    </div>
- </div>
+<div class="wrapper">
+  <div class="clock-dial">
+      <div class="point"></div>
+      <div class="hand hour" ref="hourHand" :style="{transform: `translate(-50%) rotate(${hourDeg}deg)`}"></div>
+      <div class="hand minute" ref="minuteHand" :style="{transform: `translate(-50%) rotate(${minDeg}deg)`}"></div>
+      <div class="hand second" ref="secondHand" :style="{transform: `translate(-50%) rotate(${secDeg}deg)`}"></div>
+      <div :class='["hour num"+ i]' v-for="(n, i) in 12" :key="i" :style="`--rotation:30*calc(${i} + 1)`">
+        <span>{{n}}</span>
+      </div>
+  </div>
+ </diV>
 </template>
 
 <style scoped>
+
+.wrapper {
+    margin-inline: auto;
+}
   
 .clock-dial {
-  width: 500px;
-  height: 500px;
+  min-width: 200px;
+  min-height: 200px;
+  aspect-ratio: 1;
   border: 1px solid rgb(110, 110, 110);
   border-radius: 50%;
   position: relative;
@@ -66,7 +73,7 @@ function setClock() {
 
 .hour {
   --rotation: 0;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   color: black;
   position: absolute;
@@ -108,6 +115,32 @@ function setClock() {
   width: 10px;
   height: 35%;
   background-color: black;
+}
+
+/* desktop */
+@media (min-width:640px) {
+  .wrapper {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+  }
+
+  .clock-dial {
+    width: 500px;
+    height: 500px;
+  }
+
+  .hour {
+    font-size: 3rem
+  }
+}
+
+/* mobile */
+@media (max-width:639px) {
+   .wrapper {
+     margin-top: 5rem;
+  }
+  
 }
 
 </style>
