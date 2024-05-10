@@ -44,7 +44,7 @@ function setClock() {
 <style scoped>
 
 .wrapper {
-  min-height: 100vh;
+  height: 100vh;
 }
   
 .clock-dial {
