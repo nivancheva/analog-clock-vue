@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted} from "vue";
+import { ref } from "vue";
 
 const hourHand = ref("");
 const minuteHand = ref("");
@@ -30,9 +30,9 @@ function setClock() {
 <template>
  <div class="clock-dial">
     <div class="point"></div>
-    <div class="hand hour" ref="hourHand" :style="{transform: `rotate(${hourDeg}deg)`}"></div>
-    <div class="hand minute" ref="minuteHand" :style="{transform: `rotate(${minDeg}deg)`}"></div>
-    <div class="hand second" ref="secondHand" :style="{transform: `rotate(${secDeg}deg)`}"></div>
+    <div class="hand hour" ref="hourHand" :style="{transform: `translate(-50%) rotate(${hourDeg}deg)`}"></div>
+    <div class="hand minute" ref="minuteHand" :style="{transform: `translate(-50%) rotate(${minDeg}deg)`}"></div>
+    <div class="hand second" ref="secondHand" :style="{transform: `translate(-50%) rotate(${secDeg}deg)`}"></div>
     <div :class='["hour num"+ i]' v-for="(n, i) in 12" :key="i" :style="`--rotation:30*${i}`">
       <span>{{n}}</span>
     </div>
@@ -90,7 +90,6 @@ function setClock() {
   border-top-right-radius: 10px;
   transform-origin: bottom;
   z-index: 10;
-  transform: translateX(-50%);
 }
 
 .hand.second {
