@@ -17,9 +17,9 @@ onMounted(() => {
     const min = currentDate.getMinutes();
     const hour = currentDate.getHours(); 
 
-    secDeg.value = sec / 60 * 360;
-    minDeg.value = min / 60 * 360;
-    hourDeg.value = hour / 12 * 360;
+    secDeg.value = sec * 6;
+    minDeg.value = min * 6;
+    hourDeg.value = 30 * hour + min / 2;
     
   }, 1000);
 });
@@ -32,7 +32,9 @@ onMounted(() => {
     <div class="hand hour" ref="hourHand" :style="{transform: `rotate(${hourDeg}deg)`}"></div>
     <div class="hand minute" ref="minuteHand" :style="{transform: `rotate(${minDeg}deg)`}"></div>
     <div class="hand second" ref="secondHand" :style="{transform: `rotate(${secDeg}deg)`}"></div>
-    <div class="hour" v-for="(n, i) in 12" :key="i" :class='["num"+ i]'>{{n}}</div>
+    <div class="hour" v-for="(n, i) in 12" :key="i" :class='["num"+ i]'>
+      <span>{{n}}</span>
+    </div>
  </div>
 </template>
 
@@ -75,25 +77,80 @@ onMounted(() => {
 
 .num0 {--rotation: 30deg}
 
+.num0 span {
+  display: inline-block;
+  transform: rotate(-30deg);
+}
+
 .num1 {--rotation: 60deg}
+
+.num1 span {
+  display: inline-block;
+  transform: rotate(-60deg);
+}
 
 .num2 {--rotation: 90deg}
 
+.num2 span {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
 .num3 {--rotation: 120deg}
+
+.num3 span {
+  display: inline-block;
+  transform: rotate(-120deg);
+}
 
 .num4 {--rotation: 150deg}
 
+.num4 span {
+  display: inline-block;
+  transform: rotate(-150deg);
+}
+
 .num5 {--rotation: 180deg}
+
+.num5 span {
+  display: inline-block;
+  transform: rotate(-180deg);
+}
 
 .num6 {--rotation: 210deg}
 
+.num6 span {
+  display: inline-block;
+  transform: rotate(-210deg);
+}
+
 .num7 {--rotation: 240deg}
+
+.num7 span {
+  display: inline-block;
+  transform: rotate(-240deg);
+}
 
 .num8 {--rotation: 270deg}
 
+.num8 span {
+  display: inline-block;
+  transform: rotate(-270deg);
+}
+
 .num9 {--rotation: 300deg}
 
+.num9 span {
+  display: inline-block;
+  transform: rotate(-300deg);
+}
+
 .num10 {--rotation: 330deg}
+
+.num10 span {
+  display: inline-block;
+  transform: rotate(-330deg);
+}
 
 .hand {
   position: absolute;
