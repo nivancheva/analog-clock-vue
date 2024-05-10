@@ -44,14 +44,12 @@ function setClock() {
 <style scoped>
 
 .wrapper {
-  display: grid;
-  place-items: center;
   min-height: 100vh;
 }
   
 .clock-dial {
-  min-width: 200px;
-  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   aspect-ratio: 1;
   border: 1px solid rgb(110, 110, 110);
   border-radius: 50%;
@@ -121,10 +119,14 @@ function setClock() {
 
 /* desktop */
 @media (min-width:640px) {
+  .wrapper {
+    display: grid;
+    place-items: center;
+  }
 
   .clock-dial {
-    width: 500px;
-    height: 500px;
+    min-width: 500px;
+    min-height: 500px;
   }
 
   .hour {
@@ -134,7 +136,9 @@ function setClock() {
 
 /* mobile */
 @media (max-width:639px) {
-   
+   .clock-dial {
+      margin: 5rem auto 0;
+   }
   
 }
 
