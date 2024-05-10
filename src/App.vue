@@ -17,7 +17,7 @@ function setClock() {
 
     secDeg.value = sec * 6;
     minDeg.value = min * 6;
-    hourDeg.value = 30 * hour + min / 2;
+    hourDeg.value = hour * 30 + min / 2;
 }
 
   setInterval(setClock, 1000);
@@ -33,7 +33,7 @@ function setClock() {
     <div class="hand hour" ref="hourHand" :style="{transform: `translate(-50%) rotate(${hourDeg}deg)`}"></div>
     <div class="hand minute" ref="minuteHand" :style="{transform: `translate(-50%) rotate(${minDeg}deg)`}"></div>
     <div class="hand second" ref="secondHand" :style="{transform: `translate(-50%) rotate(${secDeg}deg)`}"></div>
-    <div :class='["hour num"+ i]' v-for="(n, i) in 12" :key="i" :style="`--rotation:30*${i}`">
+    <div :class='["hour num"+ i]' v-for="(n, i) in 12" :key="i" :style="`--rotation:30*calc(${i} + 1)`">
       <span>{{n}}</span>
     </div>
  </div>
