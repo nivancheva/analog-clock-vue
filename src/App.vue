@@ -44,7 +44,9 @@ function setClock() {
 <style scoped>
 
 .wrapper {
-    margin-inline: auto;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
 }
   
 .clock-dial {
@@ -73,7 +75,7 @@ function setClock() {
 
 .hour {
   --rotation: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: black;
   position: absolute;
@@ -119,11 +121,6 @@ function setClock() {
 
 /* desktop */
 @media (min-width:640px) {
-  .wrapper {
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-  }
 
   .clock-dial {
     width: 500px;
@@ -137,9 +134,7 @@ function setClock() {
 
 /* mobile */
 @media (max-width:639px) {
-   .wrapper {
-     margin-top: 5rem;
-  }
+   
   
 }
 
