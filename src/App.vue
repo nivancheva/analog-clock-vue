@@ -118,7 +118,7 @@ function setClock() {
 }
 
 /* desktop */
-@media (min-width:640px) {
+@media (min-width:741px) {
   .wrapper {
     display: grid;
     place-items: center;
@@ -135,9 +135,13 @@ function setClock() {
 }
 
 /* mobile */
-@media (max-width:639px) {
+@media (max-width:740px) {
+   .wrapper {
+      margin-top: 5rem;
+   }
+
    .clock-dial {
-      margin: 5rem auto 0;
+    margin-inline: auto
    }
   
 }
