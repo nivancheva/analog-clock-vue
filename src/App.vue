@@ -137,7 +137,7 @@ function setClock() {
 /* mobile */
 @media (max-width:740px) {
    .wrapper {
-      margin-top: 5rem;
+      margin-top: 2rem;
    }
 
    .clock-dial {
